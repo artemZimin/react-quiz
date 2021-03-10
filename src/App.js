@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import Todos from './pages/Todos/Todos'
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
+import Todo from './pages/Todo/Todo'
+import TodoCreate from './pages/TodoCreate/TodoCreate'
+import Error404 from './pages/Error404/Error404'
+import Profile from './pages/Profile/Profile'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = props => {
+
+    return (
+        <div>
+            <Switch>
+                <Route exact path="/" component={Todos} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/todos/todo/create" component={TodoCreate} />
+                <Route path="/todos/todo/:id" component={Todo} />
+                <Route path="*" component={Error404} />
+            </Switch>
+        </div>
+    )
 }
 
-export default App;
+export default App
