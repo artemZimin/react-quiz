@@ -4,16 +4,30 @@ class Model {
 
     static async fetchAll() {
 
-        const quizes = await Quiz.find()
+        try {
 
-        return quizes
+            const quizes = await Quiz.find()
+
+            return quizes
+
+        } catch (e) {
+
+            throw e
+        }
     }
 
     static async fetchById(id) {
 
-        const quiz = await Quiz.findById(id)
+        try {
 
-        return quiz
+            const quiz = await Quiz.findById(id)
+
+            return quiz
+            
+        } catch (e) {
+
+            throw e
+        }
     }
 
     constructor({ title, authorId, questions }) {
@@ -31,7 +45,14 @@ class Model {
             questions: this.questions
         })
 
-        await quiz.save()
+        try {
+
+            await quiz.save()
+            
+        } catch (e) {
+
+            throw e
+        }
     }
 }
 

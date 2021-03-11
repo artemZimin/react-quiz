@@ -6,7 +6,15 @@ module.exports = async (req, res) => {
 
     const quiz = new Quiz(data)
 
-    await quiz.save()
+    try {
 
-    res.json(quiz)
+        await quiz.save()
+
+        res.json(quiz)
+
+    } catch (e) {
+
+        res.status(500)
+        res.end()
+    }
 }

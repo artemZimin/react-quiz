@@ -2,7 +2,15 @@ const Quiz = require('../../models/Quiz')
 
 module.exports = async (req, res) => {
 
-    const quizes = await Quiz.fetchAll()
+    try {
 
-    res.send(quizes)
+        const quizes = await Quiz.fetchAll()
+
+        res.send(quizes)
+
+    } catch (e) {
+
+        res.status(500)
+        res.end()
+    }
 }
