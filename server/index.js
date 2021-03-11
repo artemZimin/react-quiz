@@ -3,7 +3,7 @@ require('./db/connect')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const PORT = process.env.APP_PORT ?? 80
+const PORT = process.env.APP_PORT || 80
 
 app.use(bodyParser.json())
 
